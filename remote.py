@@ -9,8 +9,10 @@ ARCHIVE = '.tar.xz'
 ARCHITECTURES = ['x86_64', 'i686']
 CHARSET = 'u8'
 DISTRIBUTION = 'distrib'
+FILES = '.files'
+MINGW = 'mingw'
 SIGNATURE = '.sig'
-SUBSYSTEMS = ['msys', 'mingw']
+SUBSYSTEMS = ['msys', 'mingw64']
 
 
 class Remote:
@@ -21,7 +23,8 @@ class Remote:
         self.load()
 
     def load(self):
-        d = {}
+        a = {}
+        c = {}
         for architecture in self.architectures:
             url = os.path.join(self.location, DISTRIBUTION, architecture)
             html = requests.get(url).content.decode(CHARSET)
@@ -29,8 +32,18 @@ class Remote:
             archives = [link for link in links
                         if link.endswith(ARCHIVE)]
             archive = archives[-1]
-            d[architecture] = archive
-        self.archives = d
+            a[architecture] = archive
+            #
+            for subsystem in self.subsystems:
+                location = [self.location]
+                if subsystem != SUBSYSTEMS[0]:
+                    location.append(MINGW)
+                location = os.path.join(*location, subsystem, architecture,
+                                        f'{subsystem}{FILES}')
+                binary = requests.get(url).content
+                c[architecture] = binary
+        self.archives = a
+        self.catalogs = c
 
     def __str__(self):
         lines = [f'Location: {self.location}',

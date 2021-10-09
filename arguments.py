@@ -74,10 +74,10 @@ compression applying to archive
 
         remote='https://repo.msys2.org',
         architectures=['x86_64'],
-        subsystems=['msys', 'mingw'],
+        subsystems=['msys', 'mingw64'],
 
         filesystem='fs',
-        compression='7z',
+        compression='zst',
     )
 
     return vars(parser.parse_args())
