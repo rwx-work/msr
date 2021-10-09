@@ -37,4 +37,5 @@ class Remote:
                  'Archives:']
         for architecture, archive in reversed(sorted(self.archives.items())):
             lines.append(f'{architecture} → {archive}')
+        lines.append(f'Subsystems: {self.subsystems}')
         return os.linesep.join(lines)
