@@ -1,6 +1,7 @@
 import argparse
 import os
 
+import remote
 
 ACTION = 'action'
 ARCHITECTURES = 'architectures'
@@ -46,7 +47,7 @@ action to perform onto msys repository
 msys remote repository's location
 ''')
     sync.add_argument(f'-{ARCHITECTURES[0]}', f'--{ARCHITECTURES}', type=str,
-                      nargs='+', choices=['x86_64', 'i686'], help='''\
+                      nargs='+', choices=remote.ARCHITECTURES, help='''\
 list of architectures to sync
 ''')
     sync.add_argument(f'-{SUBSYSTEMS[0]}', f'--{SUBSYSTEMS}', type=str,
