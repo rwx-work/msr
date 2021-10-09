@@ -26,7 +26,7 @@ class Repository:
             d[architecture] = archive
         self.archives = d
 
-    def get_temporary():
+    def get_temporary(self):
         return os.path.join(self.temporary,
                             datetime.datetime.now()
                             .strftime('%Y%m%d%H%M%S'))
@@ -35,7 +35,7 @@ class Repository:
         lines = [
             f'Directory: {self.directory}',
             f'         → {os.path.realpath(self.directory)}',
-            f'Archives:',
+            'Archives:',
         ]
         for architecture, archive in reversed(sorted(self.archives.items())):
             lines.append(f'{architecture} → {archive}')

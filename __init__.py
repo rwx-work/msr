@@ -3,12 +3,11 @@
 import sys
 
 import arguments
-import remote
 import repository
+import synchronization
 
 
-def build(repository, arguments):
-    print('Build:')
+def build(args):
     # TODO identify
     print('TODO identify')
     # TODO extract
@@ -19,8 +18,7 @@ def build(repository, arguments):
     print('TODO archive')
 
 
-def check(repository, arguments):
-    print('Check:')
+def check(args):
     # TODO prepare threads
     print('TODO prepare threads')
     # TODO run threads
@@ -29,14 +27,13 @@ def check(repository, arguments):
     print('TODO watch threads')
 
 
-def info(repository, arguments):
-    print(repository)
+def info(args):
+    print(repository.Repository(args))
 
 
-def sync(repository, args):
-    print('Sync:')
-    r = remote.Remote(args)
-    print(r)
+def sync(args):
+    sync = synchronization.Synchronization(args)
+    print(sync)
     # TODO prepare temporary directory
     print('prepare…')
     # TODO fetch
@@ -49,9 +46,8 @@ def sync(repository, args):
 
 def main():
     args = arguments.parse()
-    repo = repository.Repository(args)
-    func = getattr(sys.modules[__name__], args[arguments.ACTION])
-    func(repo, args)
+    function = getattr(sys.modules[__name__], args[arguments.ACTION])
+    function(args)
 
 
 if __name__ == '__main__':

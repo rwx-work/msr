@@ -16,11 +16,12 @@ SUBSYSTEMS = ['msys', 'mingw']
 class Remote:
     def __init__(self, args):
         self.location = args[arguments.REMOTE]
+        self.architectures = args[arguments.ARCHITECTURES]
         self.load()
 
     def load(self):
         d = {}
-        for architecture in ARCHITECTURES:
+        for architecture in self.architectures:
             url = os.path.join(self.location, DISTRIBUTION, architecture)
             html = requests.get(url).content.decode(CHARSET)
             links = sorted(hypertext.get_links(html))
