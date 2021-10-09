@@ -42,6 +42,7 @@ class Remote:
             archive = archives[-1]
             a[architecture] = archive
             #
+            c[architecture] = {}
             for ss in self.subsystems:
                 location = self.location
                 if ss == SUBSYSTEMS[0]:
@@ -53,7 +54,7 @@ class Remote:
                 if subsystem in ARCHITECTURES_SUBSYSTEMS[architecture]:
                     location = os.path.join(location, f'{subsystem}{FILES}')
                     binary = requests.get(url).content
-                    c[architecture] = binary
+                    c[architecture][subsystem] = binary
         self.archives = a
         self.catalogs = c
 
@@ -62,4 +63,7 @@ class Remote:
                  'Archives:']
         for architecture, archive in reversed(sorted(self.archives.items())):
             lines.append(f'{architecture} → {archive}')
+        lines.append('Subsystems:')
+        for architecture, subsystems in reversed(sorted(self.catalogs.items())):
+            lines.append(f'{architecture} → {list(subsystems.keys())}')
         return os.linesep.join(lines)
