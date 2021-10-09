@@ -10,6 +10,7 @@ ARCHITECTURES = ['x86_64', 'i686']
 CHARSET = 'u8'
 DISTRIBUTION = 'distrib'
 SIGNATURE = '.sig'
+SUBSYSTEMS = ['msys', 'mingw']
 
 
 class Remote:

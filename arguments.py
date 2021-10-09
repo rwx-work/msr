@@ -51,7 +51,7 @@ msys remote repository's location
 list of architectures to sync
 ''')
     sync.add_argument(f'-{SUBSYSTEMS[0]}', f'--{SUBSYSTEMS}', type=str,
-                      nargs='+', choices=['msys', 'mingw'], help='''\
+                      nargs='+', choices=remote.SUBSYSTEMS, help='''\
 list of subsystems to sync
 ''')
 
