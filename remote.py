@@ -17,6 +17,7 @@ class Remote:
     def __init__(self, args):
         self.location = args[arguments.REMOTE]
         self.architectures = args[arguments.ARCHITECTURES]
+        self.subsystems = args[arguments.SUBSYSTEMS]
         self.load()
 
     def load(self):
