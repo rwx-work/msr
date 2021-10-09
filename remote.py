@@ -8,12 +8,12 @@ import hypertext
 ARCHIVE = '.tar.xz'
 ARCHITECTURES = ['x86_64', 'i686']
 ARCHITECTURES_BITS = {
-'x86_64': 64,
-'i686': 32,
+    'x86_64': 64,
+    'i686': 32,
 }
 ARCHITECTURES_SUBSYSTEMS = {
-'x86_64': ['msys', 'clang64', 'mingw64', 'ucrt64'],
-'i686': ['msys', 'clang32', 'mingw32'],
+    'x86_64': ['msys', 'clang64', 'mingw64', 'ucrt64'],
+    'i686': ['msys', 'clang32', 'mingw32'],
 }
 CHARSET = 'u8'
 DISTRIBUTION = 'distrib'
@@ -64,6 +64,6 @@ class Remote:
         for architecture, archive in reversed(sorted(self.archives.items())):
             lines.append(f'{architecture} → {archive}')
         lines.append('Subsystems:')
-        for architecture, subsystems in reversed(sorted(self.catalogs.items())):
-            lines.append(f'{architecture} → {list(subsystems.keys())}')
+        for arch, ss in reversed(sorted(self.catalogs.items())):
+            lines.append(f'{arch} → {list(ss.keys())}')
         return os.linesep.join(lines)
