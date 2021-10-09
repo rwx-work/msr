@@ -1,8 +1,10 @@
 #! /usr/bin/env python3
 
-import arguments
-import repository
 import sys
+
+import arguments
+import remote
+import repository
 
 
 def build(repository, arguments):
@@ -31,8 +33,12 @@ def info(repository, arguments):
     print(repository)
 
 
-def sync(repository, arguments):
+def sync(repository, args):
     print('Sync:')
+    r = remote.Remote(args)
+    print(r)
+    for architecture in args[arguments.ARCHITECTURES]:
+        print(r.fetch_latest_distribution(architecture))
     # TODO prepare temporary directory
     print('prepare…')
     # TODO fetch
