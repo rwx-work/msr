@@ -5,21 +5,35 @@ import arguments
 import hypertext
 
 
+ARCHIVE = '.tar.xz'
+ARCHITECTURES = ['x86_64', 'i686']
 CHARSET = 'u8'
 DISTRIBUTION = 'distrib'
+SIGNATURE = '.sig'
 
 
 class Remote:
     def __init__(self, args):
         self.location = args[arguments.REMOTE]
+        self.load()
 
-    def fetch_latest_distribution(self, architecture):
-        url = os.path.join(self.location, DISTRIBUTION, architecture)
-        html = requests.get(url).content.decode(CHARSET)
-        links = hypertext.get_links(html)
-        print(links)
+    def load(self):
+        d = {}
+        for architecture in ARCHITECTURES:
+            url = os.path.join(self.location, DISTRIBUTION, architecture)
+            html = requests.get(url).content.decode(CHARSET)
+            links = sorted(hypertext.get_links(html))
+            archives = [link for link in links
+                        if link.endswith(ARCHIVE)]
+            signatures = [link for link in links
+                          if link.endswith(SIGNATURE)]
+            archive = archives[-1]
+            d[architecture] = archive
+        self.archives = d
 
     def __str__(self):
         return f'''\
 Location: {self.location}
+Archives:
+{self.archives}
 '''
