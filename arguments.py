@@ -74,7 +74,7 @@ compression applying to archive
 
         remote='https://repo.msys2.org',
         architectures=['x86_64'],
-        subsystems=['msys', 'mingw64'],
+        subsystems=['msys', 'mingw'],
 
         filesystem='fs',
         compression='zst',
