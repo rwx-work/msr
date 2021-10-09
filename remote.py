@@ -16,9 +16,9 @@ ARCHITECTURES_SUBSYSTEMS = {
     'x86_64': ['msys', 'clang64', 'mingw64', 'ucrt64'],
     'i686': ['msys', 'clang32', 'mingw32'],
 }
+CATALOG = '.files'
 CHARSET = 'u8'
 DISTRIBUTION = 'distrib'
-FILES = '.files'
 MINGW = 'mingw'
 SIGNATURE = '.sig'
 SUBSYSTEMS = ['msys', 'clang', 'mingw', 'ucrt']
@@ -53,7 +53,7 @@ class Remote:
                     subsystem = f'{ss}{ARCHITECTURES_BITS[architecture]}'
                     location = os.path.join(location, MINGW, subsystem)
                 if subsystem in ARCHITECTURES_SUBSYSTEMS[architecture]:
-                    location = os.path.join(location, f'{subsystem}{FILES}')
+                    location = os.path.join(location, f'{subsystem}{CATALOG}')
                     binary = requests.get(location).content
                     c[architecture][subsystem] = catalog.Catalog(binary)
         self.archives = a
