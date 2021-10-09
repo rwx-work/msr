@@ -37,8 +37,6 @@ def sync(repository, args):
     print('Sync:')
     r = remote.Remote(args)
     print(r)
-    for architecture in args[arguments.ARCHITECTURES]:
-        print(r.fetch_latest_distribution(architecture))
     # TODO prepare temporary directory
     print('prepare…')
     # TODO fetch
