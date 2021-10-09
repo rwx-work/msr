@@ -32,8 +32,8 @@ class Remote:
         self.archives = d
 
     def __str__(self):
-        return f'''\
-Location: {self.location}
-Archives:
-{self.archives}
-'''
+        lines = [f'Location: {self.location}',
+                 'Archives:']
+        for architecture, archive in sorted(self.archives.items()):
+            lines.append(f'{architecture} → {archive}')
+        return os.linesep.join(lines)
