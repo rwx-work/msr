@@ -2,6 +2,7 @@ import os
 import requests
 
 import arguments
+import catalog
 import hypertext
 
 
@@ -34,8 +35,8 @@ class Remote:
         a = {}
         c = {}
         for architecture in self.architectures:
-            url = os.path.join(self.location, DISTRIBUTION, architecture)
-            html = requests.get(url).content.decode(CHARSET)
+            location = os.path.join(self.location, DISTRIBUTION, architecture)
+            html = requests.get(location).content.decode(CHARSET)
             links = sorted(hypertext.get_links(html))
             archives = [link for link in links
                         if link.endswith(ARCHIVE)]
@@ -53,8 +54,8 @@ class Remote:
                     location = os.path.join(location, MINGW, subsystem)
                 if subsystem in ARCHITECTURES_SUBSYSTEMS[architecture]:
                     location = os.path.join(location, f'{subsystem}{FILES}')
-                    binary = requests.get(url).content
-                    c[architecture][subsystem] = binary
+                    binary = requests.get(location).content
+                    c[architecture][subsystem] = catalog.Catalog(binary)
         self.archives = a
         self.catalogs = c
 
