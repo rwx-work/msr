@@ -9,9 +9,6 @@ class Repository:
     def __init__(self, args):
         self.directory = args[arguments.DIRECTORY]
         self.temporary = args[arguments.TEMPORARY]
-        self.tmp = os.path.join(self.temporary,
-                                datetime.datetime.now()
-                                .strftime('%Y%m%d%H%M%S'))
         self.load()
 
     def load(self):
@@ -29,6 +26,11 @@ class Repository:
             d[architecture] = archive
         self.archives = d
 
+    def get_temporary():
+        return os.path.join(self.temporary,
+                            datetime.datetime.now()
+                            .strftime('%Y%m%d%H%M%S'))
+
     def __str__(self):
         lines = [
             f'Directory: {self.directory}',
@@ -37,5 +39,4 @@ class Repository:
         ]
         for architecture, archive in reversed(sorted(self.archives.items())):
             lines.append(f'{architecture} → {archive}')
-        lines.append(f'Temporary: {self.tmp}')
         return os.linesep.join(lines)
