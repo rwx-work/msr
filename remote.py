@@ -28,8 +28,6 @@ class Remote:
             links = sorted(hypertext.get_links(html))
             archives = [link for link in links
                         if link.endswith(ARCHIVE)]
-            signatures = [link for link in links
-                          if link.endswith(SIGNATURE)]
             archive = archives[-1]
             d[architecture] = archive
         self.archives = d
