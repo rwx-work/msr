@@ -1,11 +1,53 @@
 #! /usr/bin/python3
 
 import arguments
+import repository
+import sys
+
+
+def build(repository, arguments):
+    print('Build:')
+    # TODO identify
+    print('TODO identify')
+    # TODO extract
+    print('TODO extract')
+    # TODO apply
+    print('TODO apply')
+    # TODO archive
+    print('TODO archive')
+
+
+def check(repository, arguments):
+    print('Check:')
+    # TODO prepare threads
+    print('TODO prepare threads')
+    # TODO run threads
+    print('TODO run threads')
+    # TODO watch threads
+    print('TODO watch threads')
+
+
+def info(repository, arguments):
+    print(repository)
+
+
+def sync(repository, arguments):
+    print('Sync:')
+    # TODO prepare temporary directory
+    print('prepare…')
+    # TODO fetch
+    print('fetch…')
+    # TODO purge useless files
+    print('purge…')
+    # TODO clean temporary directory
+    print('clean…')
 
 
 def main():
     args = arguments.parse()
-    print(args)
+    repo = repository.Repository(args)
+    func = getattr(sys.modules[__name__], args[arguments.ACTION])
+    func(repo, args)
 
 
 if __name__ == '__main__':
