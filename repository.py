@@ -12,8 +12,9 @@ class Repository:
                                 .strftime('%Y%m%d%H%M%S'))
 
     def __str__(self):
-        return f'''\
-Directory: {self.directory}
-         → {os.path.realpath(self.directory)}
-Temporary: {self.tmp}
-'''
+        lines = [
+            f'Directory: {self.directory}',
+            f'         → {os.path.realpath(self.directory)}',
+            f'Temporary: {self.tmp}',
+        ]
+        return os.linesep.join(lines)
