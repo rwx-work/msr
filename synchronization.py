@@ -2,6 +2,7 @@ import os
 import shutil
 
 import arguments
+import file
 import msys
 import remote
 import repository
@@ -19,9 +20,17 @@ class Synchronization:
             for subsystem in msys.get_subsystems(architecture,
                                                  self.remote.subsystems):
                 catalog = self.remote.catalogs[architecture][subsystem]
+                path = msys.get_subsystem(architecture, subsystem)
                 for _, package in sorted(catalog.packages.items()):
+                    f = file.File(
+                        os.path.join(self.remote.location, path),
+                        package.name,
+                        package.csize,
+                        os.path.join(self.repository.directory, path),
+                        package.sha256sum,
+                    )
                     print()
-                    print(package)
+                    print(f)
         tmp = os.path.join(self.repository.directory,
                            self.repository.get_temporary())
         os.makedirs(tmp)
