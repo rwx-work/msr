@@ -1,5 +1,6 @@
 import os
 
+ARCHIVE = '.tar.xz'
 DISTRIBUTION = 'distrib'
 
 
@@ -11,6 +12,8 @@ class Distribution:
 
     def load(self):
         files = self.architecture.repository.get_files(self.path)
+        self.archives = [f for f in files if f.endswith(ARCHIVE)]
+        self.archive = self.archives[-1]
 
     def __str__(self):
         lines = [

@@ -25,6 +25,3 @@ class HyperText:
         parser = Parser()
         parser.feed(hypertext)
         self.links = parser.links
-        self.archives = [link for link in self.links
-                         if link.endswith(msys.ARCHIVE)]
-        self.archive = sorted(self.archives)[-1]
