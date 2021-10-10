@@ -1,7 +1,6 @@
 import os
 
-import msys
-
+CHARSET = 'u8'
 KEY = '%'
 SEPARATOR = f'{os.linesep}{os.linesep}'
 
@@ -9,7 +8,7 @@ SEPARATOR = f'{os.linesep}{os.linesep}'
 class Package:
     def __init__(self, package, files):
         for binary in [package, files]:
-            text = binary.decode(msys.CHARSET).strip()
+            text = binary.decode(CHARSET).strip()
             for item in text.split(SEPARATOR):
                 line, *lines = item.split(os.linesep)
                 key = line.split(KEY)[1].lower()

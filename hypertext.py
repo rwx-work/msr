@@ -1,7 +1,7 @@
 import html.parser
 import requests
 
-import msys
+CHARSET = 'u8'
 
 
 class Parser(html.parser.HTMLParser):
@@ -21,7 +21,7 @@ class HyperText:
         self.load()
 
     def load(self):
-        hypertext = requests.get(self.location).content.decode(msys.CHARSET)
+        hypertext = requests.get(self.location).content.decode(CHARSET)
         parser = Parser()
         parser.feed(hypertext)
         self.links = parser.links
