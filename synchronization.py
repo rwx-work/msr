@@ -4,7 +4,6 @@ import shutil
 import arguments
 import file
 import local
-import msys
 import remote
 
 
@@ -19,7 +18,7 @@ class Synchronization:
         for architecture in self.remote.architectures:
             for subsystem in architecture.subsystems.keys():
                 catalog = self.remote.catalogs[architecture][subsystem]
-                path = msys.get_subsystem(architecture, subsystem)
+                path = architecture.subsystems[subsystem].path
                 for _, package in sorted(catalog.packages.items()):
                     f = file.File(
                         os.path.join(self.remote.location, path),

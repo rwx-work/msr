@@ -4,7 +4,6 @@ ARCHIVE = '.tar.xz'
 ARCHITECTURE = 'x86_64'
 CATALOG = '.files'
 CHARSET = 'u8'
-CRT = 'mingw'
 DISTRIBUTION = 'distrib'
 REPOSITORY = 'https://repo.msys2.org'
 SIGNATURE = '.sig'
@@ -24,16 +23,6 @@ SUBSYSTEMS = [SUBSYSTEM, 'clang', 'mingw', 'ucrt']
 
 def get_distribution(architecture):
     return os.path.join(DISTRIBUTION, architecture.name)
-
-
-def get_subsystem(architecture, subsystem):
-    list = []
-    if subsystem != SUBSYSTEM:
-        list.append(CRT)
-    list.append(subsystem)
-    if subsystem == SUBSYSTEM:
-        list.append(architecture.name)
-    return os.sep.join(list)
 
 
 def get_subsystems(architecture, families):
