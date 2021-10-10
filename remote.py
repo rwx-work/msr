@@ -18,24 +18,22 @@ class Remote:
         a = {}
         c = {}
         for architecture in self.architectures:
+            subsystems = msys.get_subsystems(architecture, self.subsystems)
             location = os.path.join(self.location,
                                     msys.DISTRIBUTION, architecture)
             a[architecture] = hypertext.HyperText(location).archive
             #
             c[architecture] = {}
-            for ss in self.subsystems:
+            for subsystem in subsystems:
                 location = self.location
-                if ss == msys.SUBSYSTEMS[0]:
-                    subsystem = ss
+                if subsystem == msys.SUBSYSTEM:
                     location = os.path.join(location, subsystem, architecture)
                 else:
-                    subsystem = f'{ss}{msys.ARCHITECTURES_BITS[architecture]}'
                     location = os.path.join(location, msys.CRT, subsystem)
-                if subsystem in msys.ARCHITECTURES_SUBSYSTEMS[architecture]:
-                    location = os.path.join(location,
-                                            f'{subsystem}{msys.CATALOG}')
-                    binary = requests.get(location).content
-                    c[architecture][subsystem] = catalog.Catalog(binary)
+                location = os.path.join(location,
+                                        f'{subsystem}{msys.CATALOG}')
+                binary = requests.get(location).content
+                c[architecture][subsystem] = catalog.Catalog(binary)
         self.archives = a
         self.catalogs = c
 
