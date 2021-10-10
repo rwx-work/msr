@@ -1,5 +1,6 @@
 import os
 
+import arguments
 import distribution
 import subsystem
 
@@ -12,11 +13,16 @@ class Architecture:
         self.name = name
         self.bits = bits
         self.distribution = distribution.Distribution(self)
-        self.subsystems = {s: subsystem.SubSystem(self, s) for s in subsystems}
+        self.subsystems = {s: subsystem.SubSystem(self, s)
+                           for s in [f if f == subsystem.MAIN
+                                     else f'{f}{self.bits}'
+                                     for f in arguments.subsystems]
+                           if s in subsystems}
 
     def __str__(self):
         lines = [
             f'Name: {self.name}',
+            f'Bits: {self.bits}',
         ]
         return os.linesep.join(lines)
 

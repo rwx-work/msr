@@ -16,15 +16,3 @@ ARCHITECTURES_SUBSYSTEMS = {
     'i686': [SUBSYSTEM, 'clang32', 'mingw32'],
 }
 SUBSYSTEMS = [SUBSYSTEM, 'clang', 'mingw', 'ucrt']
-
-
-def get_subsystems(architecture, families):
-    list = []
-    for family in families:
-        if family == SUBSYSTEM:
-            subsystem = family
-        else:
-            subsystem = f'{family}{architecture.bits}'
-        if subsystem in ARCHITECTURES_SUBSYSTEMS[architecture.name]:
-            list.append(subsystem)
-    return list
