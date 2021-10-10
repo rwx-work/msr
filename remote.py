@@ -33,6 +33,9 @@ class Remote(repository.Repository):
         self.archives = archives
         self.catalogs = c
 
+    def get_files(self, path):
+        return hypertext.HyperText(os.path.join(self.location, path)).links
+
     def __str__(self):
         lines = [
             super().__str__(),

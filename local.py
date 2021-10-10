@@ -29,6 +29,10 @@ class Local(repository.Repository):
             d[arch] = archive
         self.archives = d
 
+    def get_files(self, path):
+        *_, files = next(os.walk(os.path.join(self.location, path)))
+        return files
+
     def get_temporary(self):
         return os.path.join(self.temporary,
                             datetime.datetime.now()
