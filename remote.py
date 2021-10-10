@@ -9,8 +9,8 @@ import repository
 
 
 class Remote(repository.Repository):
-    def __init__(self, args):
-        super().__init__(args[arguments.REMOTE])
+    def __init__(self):
+        super().__init__(arguments.remote)
         self.load()
 
     def load(self):

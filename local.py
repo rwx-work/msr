@@ -8,9 +8,9 @@ import repository
 
 
 class Local(repository.Repository):
-    def __init__(self, args):
-        super().__init__(args[arguments.DIRECTORY])
-        self.temporary = args[arguments.TEMPORARY]
+    def __init__(self):
+        super().__init__(arguments.directory)
+        self.temporary = arguments.temporary
         self.load()
 
     def load(self):

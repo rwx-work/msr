@@ -7,7 +7,7 @@ import local
 import synchronization
 
 
-def build(args):
+def build():
     # TODO identify
     print('TODO identify')
     # TODO extract
@@ -18,7 +18,7 @@ def build(args):
     print('TODO archive')
 
 
-def check(args):
+def check():
     # TODO prepare threads
     print('TODO prepare threads')
     # TODO run threads
@@ -27,20 +27,18 @@ def check(args):
     print('TODO watch threads')
 
 
-def info(args):
-    print(local.Local(args))
+def info():
+    print(local.Local())
 
 
-def sync(args):
-    sync = synchronization.Synchronization(args)
+def sync():
+    sync = synchronization.Synchronization()
     print(sync)
     sync.run()
 
 
 def main():
-    args = arguments.parse()
-    function = getattr(sys.modules[__name__], args[arguments.ACTION])
-    function(args)
+    getattr(sys.modules[__name__], arguments.action)()
 
 
 if __name__ == '__main__':

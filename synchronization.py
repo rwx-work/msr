@@ -8,11 +8,11 @@ import remote
 
 
 class Synchronization:
-    def __init__(self, args):
-        self.remote = remote.Remote(args)
-        self.repository = local.Local(args)
+    def __init__(self):
+        self.remote = remote.Remote()
+        self.repository = local.Local()
         self.temporary = self.repository.get_temporary()
-        self.threads = args[arguments.THREADS]
+        self.threads = arguments.threads
 
     def run(self):
         for architecture in self.remote.architectures:

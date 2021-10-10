@@ -85,5 +85,10 @@ compression applying to archive
 
 D = parse()
 
+action = D[ACTION]
 architectures = D[ARCHITECTURES]
+directory = D[DIRECTORY]
+remote = D[REMOTE]
 subsystems = D[SUBSYSTEMS]
+temporary = D[TEMPORARY]
+threads = D[THREADS]
