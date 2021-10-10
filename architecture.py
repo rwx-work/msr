@@ -20,6 +20,7 @@ class Architecture:
         ]
         return os.linesep.join(lines)
 
+
 ARCHITECTURES = {
     X86: Architecture(X86, 64),
     I86: Architecture(I86, 32),

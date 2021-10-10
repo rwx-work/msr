@@ -6,7 +6,7 @@ FAMILIES = [MAIN, 'clang', 'mingw', 'ucrt']
 
 
 class SubSystem:
-    def __init__(self, architecture):
+    def __init__(self, architecture, name):
         self.architecture = architecture
         self.name = name
 
