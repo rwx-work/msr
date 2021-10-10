@@ -4,6 +4,7 @@ import requests
 import arguments
 import catalog
 import hypertext
+import msys
 
 
 ARCHITECTURES = ['x86_64', 'i686']
@@ -20,7 +21,6 @@ CHARSET = 'u8'
 DISTRIBUTION = 'distrib'
 MINGW = 'mingw'
 SIGNATURE = '.sig'
-SUBSYSTEMS = ['msys', 'clang', 'mingw', 'ucrt']
 
 
 class Remote:
@@ -40,7 +40,7 @@ class Remote:
             c[architecture] = {}
             for ss in self.subsystems:
                 location = self.location
-                if ss == SUBSYSTEMS[0]:
+                if ss == msys.SUBSYSTEMS[0]:
                     subsystem = ss
                     location = os.path.join(location, subsystem, architecture)
                 else:

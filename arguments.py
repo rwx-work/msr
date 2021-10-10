@@ -1,6 +1,7 @@
 import argparse
 import os
 
+import msys
 import remote
 
 ACTION = 'action'
@@ -51,7 +52,7 @@ msys remote repository's location
 list of architectures to sync
 ''')
     sync.add_argument(f'-{SUBSYSTEMS[0]}', f'--{SUBSYSTEMS}', type=str,
-                      nargs='+', choices=remote.SUBSYSTEMS, help='''\
+                      nargs='+', choices=msys.SUBSYSTEMS, help='''\
 list of subsystems to sync
 ''')
 
@@ -61,7 +62,7 @@ list of subsystems to sync
 directory containing modifications applying to filesystem
 ''')
     build.add_argument(f'-{COMPRESSION[0]}', f'--{COMPRESSION}', type=str,
-                       choices=['7z', 'gz', 'xz', 'zst'], help='''\
+                       choices=['gz', 'xz', 'zst'], help='''\
 compression applying to archive
 ''')
 
