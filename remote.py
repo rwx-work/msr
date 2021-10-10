@@ -35,8 +35,7 @@ class Remote:
         c = {}
         for architecture in self.architectures:
             location = os.path.join(self.location, DISTRIBUTION, architecture)
-            archive = hypertext.HyperText(location).archive
-            a[architecture] = archive
+            a[architecture] = hypertext.HyperText(location).archive
             #
             c[architecture] = {}
             for ss in self.subsystems:
