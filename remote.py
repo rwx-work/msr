@@ -17,7 +17,6 @@ ARCHITECTURES_SUBSYSTEMS = {
     'i686': ['msys', 'clang32', 'mingw32'],
 }
 CATALOG = '.files'
-CHARSET = 'u8'
 DISTRIBUTION = 'distrib'
 MINGW = 'mingw'
 SIGNATURE = '.sig'
