@@ -1,7 +1,8 @@
-import arguments
 import datetime
 import os
 
+import architecture
+import arguments
 import distribution
 import msys
 import repository
@@ -18,14 +19,14 @@ class Local(repository.Repository):
             self.location, distribution.DISTRIBUTION)
         d = {}
         _, architectures, _ = next(os.walk(distro))
-        for architecture in [a for a in architectures
-                             if a in msys.ARCHITECTURES]:
-            directory = os.path.join(distro, architecture)
+        for arch in [a for a in architectures
+                     if a in architecture.ARCHITECTURES.keys()]:
+            directory = os.path.join(distro, arch)
             _, _, files = next(os.walk(directory))
             archives = sorted([file for file in files
                                if file.endswith(msys.ARCHIVE)])
             archive = archives[-1]
-            d[architecture] = archive
+            d[arch] = archive
         self.archives = d
 
     def get_temporary(self):
@@ -38,6 +39,6 @@ class Local(repository.Repository):
             super().__str__(),
             'Archives:',
         ]
-        for architecture, archive in reversed(sorted(self.archives.items())):
-            lines.append(f'{architecture} → {archive}')
+        for arch, archive in reversed(sorted(self.archives.items())):
+            lines.append(f'{arch} → {archive}')
         return os.linesep.join(lines)

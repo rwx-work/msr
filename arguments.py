@@ -1,6 +1,7 @@
 import argparse
 import os
 
+import architecture
 import msys
 import subsystem
 
@@ -48,7 +49,8 @@ action to perform onto msys repository
 msys remote repository's location
 ''')
     sync.add_argument(f'-{ARCHITECTURES[0]}', f'--{ARCHITECTURES}', type=str,
-                      nargs='+', choices=msys.ARCHITECTURES, help='''\
+                      nargs='+', choices=architecture.ARCHITECTURES.keys(),
+                      help='''\
 list of architectures to sync
 ''')
     sync.add_argument(f'-{SUBSYSTEMS[0]}', f'--{SUBSYSTEMS}', type=str,
