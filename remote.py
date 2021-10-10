@@ -25,12 +25,9 @@ class Remote:
             #
             c[architecture] = {}
             for subsystem in subsystems:
-                location = self.location
-                if subsystem == msys.SUBSYSTEM:
-                    location = os.path.join(location, subsystem, architecture)
-                else:
-                    location = os.path.join(location, msys.CRT, subsystem)
-                location = os.path.join(location,
+                location = os.path.join(self.location,
+                                        msys.get_subsystem(architecture,
+                                                           subsystem),
                                         f'{subsystem}{msys.CATALOG}')
                 binary = requests.get(location).content
                 c[architecture][subsystem] = catalog.Catalog(binary)
