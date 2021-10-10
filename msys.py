@@ -22,6 +22,20 @@ ARCHITECTURES_SUBSYSTEMS = {
 SUBSYSTEMS = [SUBSYSTEM, 'clang', 'mingw', 'ucrt']
 
 
+def get_distribution(architecture):
+    return os.path.join(DISTRIBUTION, architecture)
+
+
+def get_subsystem(architecture, subsystem):
+    list = []
+    if subsystem != SUBSYSTEM:
+        list.append(CRT)
+    list.append(subsystem)
+    if subsystem == SUBSYSTEM:
+        list.append(architecture)
+    return os.sep.join(list)
+
+
 def get_subsystems(architecture, families):
     list = []
     bits = ARCHITECTURES_BITS[architecture]
@@ -33,13 +47,3 @@ def get_subsystems(architecture, families):
         if subsystem in ARCHITECTURES_SUBSYSTEMS[architecture]:
             list.append(subsystem)
     return list
-
-
-def get_subsystem(architecture, subsystem):
-    list = []
-    if subsystem != SUBSYSTEM:
-        list.append(CRT)
-    list.append(subsystem)
-    if subsystem == SUBSYSTEM:
-        list.append(architecture)
-    return os.sep.join(list)

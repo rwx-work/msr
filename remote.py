@@ -15,13 +15,13 @@ class Remote:
         self.load()
 
     def load(self):
-        a = {}
+        archives = {}
         c = {}
         for architecture in self.architectures:
             subsystems = msys.get_subsystems(architecture, self.subsystems)
             location = os.path.join(self.location,
-                                    msys.DISTRIBUTION, architecture)
-            a[architecture] = hypertext.HyperText(location).archive
+                                    msys.get_distribution(architecture))
+            archives[architecture] = hypertext.HyperText(location).archive
             #
             c[architecture] = {}
             for subsystem in subsystems:
@@ -31,7 +31,7 @@ class Remote:
                                         f'{subsystem}{msys.CATALOG}')
                 binary = requests.get(location).content
                 c[architecture][subsystem] = catalog.Catalog(binary)
-        self.archives = a
+        self.archives = archives
         self.catalogs = c
 
     def __str__(self):
