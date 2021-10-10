@@ -2,6 +2,8 @@ import os
 
 MAIN = 'msys'
 
+FAMILIES = [MAIN, 'clang', 'mingw', 'ucrt']
+
 
 class SubSystem:
     def __init__(self, architecture):

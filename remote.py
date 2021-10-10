@@ -11,7 +11,6 @@ import repository
 class Remote(repository.Repository):
     def __init__(self, args):
         super().__init__(args[arguments.REMOTE])
-        self.architectures = args[arguments.ARCHITECTURES]
         self.subsystems = args[arguments.SUBSYSTEMS]
         self.load()
 
