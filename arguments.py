@@ -75,7 +75,7 @@ compression applying to archive
 
         remote=msys.REPOSITORY,
         architectures=[msys.ARCHITECTURE],
-        subsystems=[msys.SUBSYSTEM, 'mingw'],
+        subsystems=[subsystem.MAIN, 'mingw'],
 
         filesystem='fs',
         compression='zst',
