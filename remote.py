@@ -7,7 +7,6 @@ import hypertext
 import msys
 
 
-ARCHITECTURES = ['x86_64', 'i686']
 ARCHITECTURES_BITS = {
     'x86_64': 64,
     'i686': 32,

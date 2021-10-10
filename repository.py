@@ -18,7 +18,7 @@ class Repository:
         d = {}
         _, architectures, _ = next(os.walk(distribution))
         for architecture in [a for a in architectures
-                             if a in remote.ARCHITECTURES]:
+                             if a in msys.ARCHITECTURES]:
             directory = os.path.join(distribution, architecture)
             _, _, files = next(os.walk(directory))
             archives = sorted([file for file in files

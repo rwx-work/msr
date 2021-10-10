@@ -48,7 +48,7 @@ action to perform onto msys repository
 msys remote repository's location
 ''')
     sync.add_argument(f'-{ARCHITECTURES[0]}', f'--{ARCHITECTURES}', type=str,
-                      nargs='+', choices=remote.ARCHITECTURES, help='''\
+                      nargs='+', choices=msys.ARCHITECTURES, help='''\
 list of architectures to sync
 ''')
     sync.add_argument(f'-{SUBSYSTEMS[0]}', f'--{SUBSYSTEMS}', type=str,
