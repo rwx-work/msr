@@ -19,7 +19,7 @@ class Remote(repository.Repository):
         for architecture in self.architectures:
             subsystems = architecture.subsystems.keys()
             location = os.path.join(self.location,
-                                    msys.get_distribution(architecture))
+                                    architecture.distribution.path)
             archives[architecture] = hypertext.HyperText(location).archive
             #
             c[architecture] = {}

@@ -1,10 +1,7 @@
-import os
-
 ARCHIVE = '.tar.xz'
 ARCHITECTURE = 'x86_64'
 CATALOG = '.files'
 CHARSET = 'u8'
-DISTRIBUTION = 'distrib'
 REPOSITORY = 'https://repo.msys2.org'
 SIGNATURE = '.sig'
 SUBSYSTEM = 'msys'
@@ -19,10 +16,6 @@ ARCHITECTURES_SUBSYSTEMS = {
     'i686': [SUBSYSTEM, 'clang32', 'mingw32'],
 }
 SUBSYSTEMS = [SUBSYSTEM, 'clang', 'mingw', 'ucrt']
-
-
-def get_distribution(architecture):
-    return os.path.join(DISTRIBUTION, architecture.name)
 
 
 def get_subsystems(architecture, families):

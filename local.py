@@ -2,6 +2,7 @@ import arguments
 import datetime
 import os
 
+import distribution
 import msys
 import repository
 
@@ -13,13 +14,13 @@ class Local(repository.Repository):
         self.load()
 
     def load(self):
-        distribution = os.path.join(
-            self.location, msys.DISTRIBUTION)
+        distro = os.path.join(
+            self.location, distribution.DISTRIBUTION)
         d = {}
-        _, architectures, _ = next(os.walk(distribution))
+        _, architectures, _ = next(os.walk(distro))
         for architecture in [a for a in architectures
                              if a in msys.ARCHITECTURES]:
-            directory = os.path.join(distribution, architecture)
+            directory = os.path.join(distro, architecture)
             _, _, files = next(os.walk(directory))
             archives = sorted([file for file in files
                                if file.endswith(msys.ARCHIVE)])
