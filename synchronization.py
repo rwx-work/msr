@@ -17,8 +17,7 @@ class Synchronization:
 
     def run(self):
         for architecture in self.remote.architectures:
-            for subsystem in msys.get_subsystems(architecture,
-                                                 self.remote.subsystems):
+            for subsystem in architecture.subsystems.keys():
                 catalog = self.remote.catalogs[architecture][subsystem]
                 path = msys.get_subsystem(architecture, subsystem)
                 for _, package in sorted(catalog.packages.items()):

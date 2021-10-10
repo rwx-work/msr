@@ -86,3 +86,4 @@ compression applying to archive
 D = parse()
 
 architectures = D[ARCHITECTURES]
+subsystems = D[SUBSYSTEMS]

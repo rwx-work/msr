@@ -11,14 +11,13 @@ import repository
 class Remote(repository.Repository):
     def __init__(self, args):
         super().__init__(args[arguments.REMOTE])
-        self.subsystems = args[arguments.SUBSYSTEMS]
         self.load()
 
     def load(self):
         archives = {}
         c = {}
         for architecture in self.architectures:
-            subsystems = msys.get_subsystems(architecture, self.subsystems)
+            subsystems = architecture.subsystems.keys()
             location = os.path.join(self.location,
                                     msys.get_distribution(architecture))
             archives[architecture] = hypertext.HyperText(location).archive
