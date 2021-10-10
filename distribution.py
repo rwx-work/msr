@@ -7,7 +7,7 @@ DISTRIBUTION = 'distrib'
 class Distribution:
     def __init__(self, architecture):
         self.architecture = architecture
-        self.path = os.sep.join([DISTRIBUTION, self.architecture.name])
+        self.path = os.path.join(DISTRIBUTION, self.architecture.name)
         self.load()
 
     def load(self):

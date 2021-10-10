@@ -19,7 +19,7 @@ class SubSystem:
         list.append(self.name)
         if self.name == MAIN:
             list.append(self.architecture.name)
-        self.path = os.sep.join(list)
+        self.path = os.path.join(*list)
         # catalog
         self.catalog = catalog.Catalog(self)
 
