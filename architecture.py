@@ -6,7 +6,7 @@ import subsystem
 
 ARCHITECTURES = {
     'x86_64': (64, [subsystem.MAIN, 'clang64', 'mingw64', 'ucrt64']),
-    'i686'  : (32, [subsystem.MAIN, 'clang32', 'mingw32']),
+    'i686':   (32, [subsystem.MAIN, 'clang32', 'mingw32']),
 }
 
 
