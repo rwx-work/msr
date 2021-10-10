@@ -4,14 +4,17 @@ import arguments
 import distribution
 import subsystem
 
-X86 = 'x86_64'
-I86 = 'i686'
+ARCHITECTURES = {
+    'x86_64': (64, [subsystem.MAIN, 'clang64', 'mingw64', 'ucrt64']),
+    'i686'  : (32, [subsystem.MAIN, 'clang32', 'mingw32']),
+}
 
 
 class Architecture:
-    def __init__(self, name, bits, subsystems):
+    def __init__(self, repository, name):
+        self.repository = repository
         self.name = name
-        self.bits = bits
+        self.bits, subsystems = ARCHITECTURES[self.name]
         self.distribution = distribution.Distribution(self)
         self.subsystems = {s: subsystem.SubSystem(self, s)
                            for s in [f if f == subsystem.MAIN
@@ -25,14 +28,3 @@ class Architecture:
             f'Bits: {self.bits}',
         ]
         return os.linesep.join(lines)
-
-
-x86 = Architecture(X86, 64, [subsystem.MAIN,
-                             'clang64', 'mingw64', 'ucrt64'])
-i86 = Architecture(I86, 32, [subsystem.MAIN,
-                             'clang32', 'mingw32'])
-
-ARCHITECTURES = {
-    X86: x86,
-    I86: i86,
-}

@@ -7,7 +7,7 @@ import arguments
 class Repository:
     def __init__(self, location):
         self.location = location
-        self.architectures = [architecture.ARCHITECTURES[a]
+        self.architectures = [architecture.Architecture(self, a)
                               for a in arguments.architectures]
 
     def __str__(self):
