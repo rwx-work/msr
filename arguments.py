@@ -2,7 +2,7 @@ import argparse
 import os
 
 import architecture
-import msys
+import remote as r
 import subsystem
 
 ACTION = 'action'
@@ -75,7 +75,7 @@ compression applying to archive
 
         action='info',
 
-        remote=msys.REPOSITORY,
+        remote=r.MAIN,
         architectures=[architecture.MAIN],
         subsystems=[subsystem.MAIN, 'mingw'],
 

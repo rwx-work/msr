@@ -5,6 +5,8 @@ import arguments
 import hypertext
 import repository
 
+MAIN = 'https://repo.msys2.org'
+
 
 class Remote(repository.Repository):
     def __init__(self):
