@@ -7,10 +7,6 @@ SIGNATURE = '.sig'
 SUBSYSTEM = 'msys'
 
 ARCHITECTURES = [ARCHITECTURE, 'i686']
-ARCHITECTURES_BITS = {
-    ARCHITECTURE: 64,
-    'i686': 32,
-}
 ARCHITECTURES_SUBSYSTEMS = {
     ARCHITECTURE: [SUBSYSTEM, 'clang64', 'mingw64', 'ucrt64'],
     'i686': [SUBSYSTEM, 'clang32', 'mingw32'],
