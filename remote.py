@@ -6,7 +6,6 @@ import catalog
 import hypertext
 
 
-ARCHIVE = '.tar.xz'
 ARCHITECTURES = ['x86_64', 'i686']
 ARCHITECTURES_BITS = {
     'x86_64': 64,
@@ -36,10 +35,7 @@ class Remote:
         c = {}
         for architecture in self.architectures:
             location = os.path.join(self.location, DISTRIBUTION, architecture)
-            links = sorted(hypertext.get_links(location))
-            archives = [link for link in links
-                        if link.endswith(ARCHIVE)]
-            archive = archives[-1]
+            archive = hypertext.HyperText(location).archive
             a[architecture] = archive
             #
             c[architecture] = {}

@@ -1,7 +1,7 @@
 import html.parser
 import requests
 
-CHARSET = 'u8'
+import msys
 
 
 class Parser(html.parser.HTMLParser):
@@ -15,8 +15,16 @@ class Parser(html.parser.HTMLParser):
                 [v for k, v in attributes if k == 'href'])
 
 
-def get_links(location):
-    hypertext = requests.get(location).content.decode(CHARSET)
-    parser = Parser()
-    parser.feed(hypertext)
-    return parser.links
+class HyperText:
+    def __init__(self, location):
+        self.location = location
+        self.load()
+
+    def load(self):
+        hypertext = requests.get(self.location).content.decode(msys.CHARSET)
+        parser = Parser()
+        parser.feed(hypertext)
+        self.links = parser.links
+        self.archives = [link for link in self.links
+                         if link.endswith(msys.ARCHIVE)]
+        self.archive = sorted(self.archives)[-1]

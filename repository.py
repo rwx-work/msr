@@ -2,6 +2,7 @@ import arguments
 import datetime
 import os
 
+import msys
 import remote
 
 
@@ -21,7 +22,7 @@ class Repository:
             directory = os.path.join(distribution, architecture)
             _, _, files = next(os.walk(directory))
             archives = sorted([file for file in files
-                               if file.endswith(remote.ARCHIVE)])
+                               if file.endswith(msys.ARCHIVE)])
             archive = archives[-1]
             d[architecture] = archive
         self.archives = d
