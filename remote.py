@@ -18,7 +18,6 @@ ARCHITECTURES_SUBSYSTEMS = {
 CATALOG = '.files'
 DISTRIBUTION = 'distrib'
 MINGW = 'mingw'
-SIGNATURE = '.sig'
 
 
 class Remote:
