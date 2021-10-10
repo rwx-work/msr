@@ -34,14 +34,7 @@ def info(args):
 def sync(args):
     sync = synchronization.Synchronization(args)
     print(sync)
-    # TODO prepare temporary directory
-    print('prepare…')
-    # TODO fetch
-    print('fetch…')
-    # TODO purge useless files
-    print('purge…')
-    # TODO clean temporary directory
-    print('clean…')
+    sync.run()
 
 
 def main():
