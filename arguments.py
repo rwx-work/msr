@@ -2,7 +2,6 @@ import argparse
 import os
 
 import msys
-import remote
 
 ACTION = 'action'
 ARCHITECTURES = 'architectures'
