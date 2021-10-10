@@ -7,14 +7,6 @@ import hypertext
 import msys
 
 
-ARCHITECTURES_BITS = {
-    'x86_64': 64,
-    'i686': 32,
-}
-ARCHITECTURES_SUBSYSTEMS = {
-    'x86_64': ['msys', 'clang64', 'mingw64', 'ucrt64'],
-    'i686': ['msys', 'clang32', 'mingw32'],
-}
 MINGW = 'mingw'
 
 
@@ -40,9 +32,9 @@ class Remote:
                     subsystem = ss
                     location = os.path.join(location, subsystem, architecture)
                 else:
-                    subsystem = f'{ss}{ARCHITECTURES_BITS[architecture]}'
+                    subsystem = f'{ss}{msys.ARCHITECTURES_BITS[architecture]}'
                     location = os.path.join(location, MINGW, subsystem)
-                if subsystem in ARCHITECTURES_SUBSYSTEMS[architecture]:
+                if subsystem in msys.ARCHITECTURES_SUBSYSTEMS[architecture]:
                     location = os.path.join(location,
                                             f'{subsystem}{msys.CATALOG}')
                     binary = requests.get(location).content
