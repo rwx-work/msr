@@ -20,8 +20,9 @@ class Package:
 
     def __str__(self):
         lines = [
-            f'Name: {self.name}',
-            f'Size: {self.csize}',
-            f'Hash: {self.sha256sum}',
+            f'    Name: {self.name}',
+            f'FileName: {self.filename}',
+            f'    Size: {self.csize}',
+            f'    Hash: {self.sha256sum}',
         ]
         return os.linesep.join(lines)

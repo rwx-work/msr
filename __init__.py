@@ -1,5 +1,7 @@
 #! /usr/bin/env python3
 
+import hashlib
+import os
 import sys
 
 import arguments
@@ -19,12 +21,22 @@ def build():
 
 
 def check():
-    # TODO prepare threads
-    print('TODO prepare threads')
-    # TODO run threads
-    print('TODO run threads')
-    # TODO watch threads
-    print('TODO watch threads')
+    packages = []
+    broken = []
+    lo = local.Local()
+    for architecture in lo.architectures:
+        for subsystem in architecture.subsystems.values():
+            for package in subsystem.catalog.packages.values():
+                packages.append((subsystem, package))
+    for index, items in enumerate(packages):
+        print(index, '/', len(packages))
+        subsystem, package = items
+        path = os.path.join(subsystem.path, package.filename)
+        with open(path, 'br') as f:
+            hash = hashlib.sha256(f.read()).hexdigest()
+            if hash != package.sha256sum:
+                broken.append(package)
+    print(len(broken), '/', len(packages))
 
 
 def info():
