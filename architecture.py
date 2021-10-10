@@ -4,9 +4,11 @@ import arguments
 import distribution
 import subsystem
 
+MAIN = 'x86_64'
+
 ARCHITECTURES = {
-    'x86_64': (64, [subsystem.MAIN, 'clang64', 'mingw64', 'ucrt64']),
-    'i686':   (32, [subsystem.MAIN, 'clang32', 'mingw32']),
+    MAIN:   (64, [subsystem.MAIN, 'clang64', 'mingw64', 'ucrt64']),
+    'i686': (32, [subsystem.MAIN, 'clang32', 'mingw32']),
 }
 
 

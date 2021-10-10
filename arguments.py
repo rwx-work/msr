@@ -76,7 +76,7 @@ compression applying to archive
         action='info',
 
         remote=msys.REPOSITORY,
-        architectures=[msys.ARCHITECTURE],
+        architectures=[architecture.MAIN],
         subsystems=[subsystem.MAIN, 'mingw'],
 
         filesystem='fs',
