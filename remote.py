@@ -5,9 +5,10 @@ import arguments
 import catalog
 import hypertext
 import msys
+import repository
 
 
-class Remote:
+class Remote(repository.Repository):
     def __init__(self, args):
         self.location = args[arguments.REMOTE]
         self.architectures = args[arguments.ARCHITECTURES]

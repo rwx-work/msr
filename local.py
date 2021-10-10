@@ -3,9 +3,10 @@ import datetime
 import os
 
 import msys
+import repository
 
 
-class Local:
+class Local(repository.Repository):
     def __init__(self, args):
         self.directory = args[arguments.DIRECTORY]
         self.temporary = args[arguments.TEMPORARY]
