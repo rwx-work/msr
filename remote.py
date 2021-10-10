@@ -10,7 +10,7 @@ import repository
 
 class Remote(repository.Repository):
     def __init__(self, args):
-        self.location = args[arguments.REMOTE]
+        super().__init__(args[arguments.REMOTE])
         self.architectures = args[arguments.ARCHITECTURES]
         self.subsystems = args[arguments.SUBSYSTEMS]
         self.load()
@@ -36,8 +36,10 @@ class Remote(repository.Repository):
         self.catalogs = c
 
     def __str__(self):
-        lines = [f'Location: {self.location}',
-                 'Archives:']
+        lines = [
+            super().__str__(),
+            'Archives:',
+        ]
         for architecture, archive in reversed(sorted(self.archives.items())):
             lines.append(f'{architecture} → {archive}')
         lines.append('Subsystems:')

@@ -26,12 +26,12 @@ class Synchronization:
                         os.path.join(self.remote.location, path),
                         package.name,
                         package.csize,
-                        os.path.join(self.repository.directory, path),
+                        os.path.join(self.repository.location, path),
                         package.sha256sum,
                     )
                     print()
                     print(f)
-        tmp = os.path.join(self.repository.directory,
+        tmp = os.path.join(self.repository.location,
                            self.repository.get_temporary())
         os.makedirs(tmp)
         # clean temporary directory

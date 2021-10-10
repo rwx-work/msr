@@ -8,13 +8,13 @@ import repository
 
 class Local(repository.Repository):
     def __init__(self, args):
-        self.directory = args[arguments.DIRECTORY]
+        super().__init__(args[arguments.DIRECTORY])
         self.temporary = args[arguments.TEMPORARY]
         self.load()
 
     def load(self):
         distribution = os.path.join(
-            self.directory, msys.DISTRIBUTION)
+            self.location, msys.DISTRIBUTION)
         d = {}
         _, architectures, _ = next(os.walk(distribution))
         for architecture in [a for a in architectures
@@ -34,8 +34,7 @@ class Local(repository.Repository):
 
     def __str__(self):
         lines = [
-            f'Directory: {self.directory}',
-            f'         → {os.path.realpath(self.directory)}',
+            super().__str__(),
             'Archives:',
         ]
         for architecture, archive in reversed(sorted(self.archives.items())):
