@@ -36,8 +36,7 @@ class Remote:
         c = {}
         for architecture in self.architectures:
             location = os.path.join(self.location, DISTRIBUTION, architecture)
-            html = requests.get(location).content.decode(CHARSET)
-            links = sorted(hypertext.get_links(html))
+            links = sorted(hypertext.get_links(location))
             archives = [link for link in links
                         if link.endswith(ARCHIVE)]
             archive = archives[-1]
