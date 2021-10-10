@@ -3,15 +3,15 @@ import shutil
 
 import arguments
 import file
+import local
 import msys
 import remote
-import repository
 
 
 class Synchronization:
     def __init__(self, args):
         self.remote = remote.Remote(args)
-        self.repository = repository.Repository(args)
+        self.repository = local.Repository(args)
         self.temporary = self.repository.get_temporary()
         self.threads = args[arguments.THREADS]
 

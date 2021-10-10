@@ -3,7 +3,7 @@
 import sys
 
 import arguments
-import repository
+import local
 import synchronization
 
 
@@ -28,7 +28,7 @@ def check(args):
 
 
 def info(args):
-    print(repository.Repository(args))
+    print(local.Repository(args))
 
 
 def sync(args):
