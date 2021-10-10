@@ -3,7 +3,6 @@ import datetime
 import os
 
 import msys
-import remote
 
 
 class Repository:
@@ -14,7 +13,7 @@ class Repository:
 
     def load(self):
         distribution = os.path.join(
-            self.directory, remote.DISTRIBUTION)
+            self.directory, msys.DISTRIBUTION)
         d = {}
         _, architectures, _ = next(os.walk(distribution))
         for architecture in [a for a in architectures

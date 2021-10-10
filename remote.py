@@ -15,7 +15,6 @@ ARCHITECTURES_SUBSYSTEMS = {
     'x86_64': ['msys', 'clang64', 'mingw64', 'ucrt64'],
     'i686': ['msys', 'clang32', 'mingw32'],
 }
-DISTRIBUTION = 'distrib'
 MINGW = 'mingw'
 
 
@@ -30,7 +29,8 @@ class Remote:
         a = {}
         c = {}
         for architecture in self.architectures:
-            location = os.path.join(self.location, DISTRIBUTION, architecture)
+            location = os.path.join(self.location,
+                                    msys.DISTRIBUTION, architecture)
             a[architecture] = hypertext.HyperText(location).archive
             #
             c[architecture] = {}
