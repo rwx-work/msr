@@ -5,7 +5,7 @@ import os
 import msys
 
 
-class Repository:
+class Local:
     def __init__(self, args):
         self.directory = args[arguments.DIRECTORY]
         self.temporary = args[arguments.TEMPORARY]

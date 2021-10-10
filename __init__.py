@@ -28,7 +28,7 @@ def check(args):
 
 
 def info(args):
-    print(local.Repository(args))
+    print(local.Local(args))
 
 
 def sync(args):
