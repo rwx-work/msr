@@ -2,6 +2,7 @@ import argparse
 import os
 
 import msys
+import subsystem
 
 ACTION = 'action'
 ARCHITECTURES = 'architectures'
@@ -51,7 +52,7 @@ msys remote repository's location
 list of architectures to sync
 ''')
     sync.add_argument(f'-{SUBSYSTEMS[0]}', f'--{SUBSYSTEMS}', type=str,
-                      nargs='+', choices=msys.SUBSYSTEMS, help='''\
+                      nargs='+', choices=subsystem.FAMILIES, help='''\
 list of subsystems to sync
 ''')
 

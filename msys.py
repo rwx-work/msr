@@ -7,4 +7,3 @@ SIGNATURE = '.sig'
 SUBSYSTEM = 'msys'
 
 ARCHITECTURES = [ARCHITECTURE, 'i686']
-SUBSYSTEMS = [SUBSYSTEM, 'clang', 'mingw', 'ucrt']
