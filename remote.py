@@ -7,9 +7,6 @@ import hypertext
 import msys
 
 
-MINGW = 'mingw'
-
-
 class Remote:
     def __init__(self, args):
         self.location = args[arguments.REMOTE]
@@ -33,7 +30,7 @@ class Remote:
                     location = os.path.join(location, subsystem, architecture)
                 else:
                     subsystem = f'{ss}{msys.ARCHITECTURES_BITS[architecture]}'
-                    location = os.path.join(location, MINGW, subsystem)
+                    location = os.path.join(location, msys.CRT, subsystem)
                 if subsystem in msys.ARCHITECTURES_SUBSYSTEMS[architecture]:
                     location = os.path.join(location,
                                             f'{subsystem}{msys.CATALOG}')

@@ -10,6 +10,7 @@ ARCHITECTURES_SUBSYSTEMS = {
 }
 CATALOG = '.files'
 CHARSET = 'u8'
+CRT = 'mingw'
 DISTRIBUTION = 'distrib'
 SIGNATURE = '.sig'
 SUBSYSTEM = 'msys'
