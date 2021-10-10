@@ -72,9 +72,9 @@ compression applying to archive
 
         action='info',
 
-        remote='https://repo.msys2.org',
-        architectures=['x86_64'],
-        subsystems=['msys', 'mingw'],
+        remote=msys.REPOSITORY,
+        architectures=[msys.ARCHITECTURE],
+        subsystems=[msys.SUBSYSTEM, 'mingw'],
 
         filesystem='fs',
         compression='zst',

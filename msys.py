@@ -1,18 +1,20 @@
 ARCHIVE = '.tar.xz'
-ARCHITECTURES = ['x86_64', 'i686']
-ARCHITECTURES_BITS = {
-    'x86_64': 64,
-    'i686': 32,
-}
+ARCHITECTURE = 'x86_64'
 CATALOG = '.files'
 CHARSET = 'u8'
 CRT = 'mingw'
 DISTRIBUTION = 'distrib'
+REPOSITORY = 'https://repo.msys2.org'
 SIGNATURE = '.sig'
 SUBSYSTEM = 'msys'
 
+ARCHITECTURES = [ARCHITECTURE, 'i686']
+ARCHITECTURES_BITS = {
+    ARCHITECTURE: 64,
+    'i686': 32,
+}
 ARCHITECTURES_SUBSYSTEMS = {
-    'x86_64': [SUBSYSTEM, 'clang64', 'mingw64', 'ucrt64'],
+    ARCHITECTURE: [SUBSYSTEM, 'clang64', 'mingw64', 'ucrt64'],
     'i686': [SUBSYSTEM, 'clang32', 'mingw32'],
 }
 SUBSYSTEMS = [SUBSYSTEM, 'clang', 'mingw', 'ucrt']
