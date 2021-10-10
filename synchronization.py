@@ -16,15 +16,13 @@ class Synchronization:
 
     def run(self):
         for architecture in self.remote.architectures:
-            for subsystem in architecture.subsystems.keys():
-                catalog = self.remote.catalogs[architecture][subsystem]
-                path = architecture.subsystems[subsystem].path
-                for _, package in sorted(catalog.packages.items()):
+            for subsystem in architecture.subsystems.values():
+                for _, package in sorted(subsystem.catalog.packages.items()):
                     f = file.File(
-                        os.path.join(self.remote.location, path),
+                        os.path.join(self.remote.location, subsystem.path),
                         package.name,
                         package.csize,
-                        os.path.join(self.repository.location, path),
+                        os.path.join(self.repository.location, subsystem.path),
                         package.sha256sum,
                     )
                     print()
@@ -37,8 +35,10 @@ class Synchronization:
 
     def __str__(self):
         lines = [
-            str(self.remote), str(),
-            str(self.repository), str(),
+            str(self.remote),
+            str(),
+            str(self.repository),
+            str(),
             f'Temporary: {self.temporary}',
         ]
         return os.linesep.join(lines)

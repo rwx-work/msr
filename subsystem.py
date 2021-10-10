@@ -1,5 +1,7 @@
 import os
 
+import catalog
+
 CRT = 'mingw'
 MAIN = 'msys'
 
@@ -18,6 +20,8 @@ class SubSystem:
         if self.name == MAIN:
             list.append(self.architecture.name)
         self.path = os.sep.join(list)
+        # catalog
+        self.catalog = catalog.Catalog(self)
 
     def __str__(self):
         lines = [

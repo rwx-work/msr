@@ -10,6 +10,10 @@ class Local(repository.Repository):
         super().__init__(arguments.directory)
         self.temporary = arguments.temporary
 
+    def get_file(self, path):
+        with open(os.path.join(self.location, path), 'br') as f:
+            return f.read()
+
     def get_files(self, path):
         *_, files = next(os.walk(os.path.join(self.location, path)))
         return files

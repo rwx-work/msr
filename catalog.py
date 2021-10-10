@@ -4,17 +4,21 @@ import tarfile
 
 import package
 
+CATALOG = '.files'
 FILES = 'files'
 PACKAGE = 'desc'
 
 
 class Catalog:
-    def __init__(self, binary):
-        self.binary = binary
+    def __init__(self, subsystem):
+        self.subsystem = subsystem
+        self.path = os.path.join(self.subsystem.path,
+                                 f'{self.subsystem.name}{CATALOG}')
         self.load()
 
     def load(self):
-        f = io.BytesIO(self.binary)
+        binary = self.subsystem.architecture.repository.get_file(self.path)
+        f = io.BytesIO(binary)
         archive = tarfile.open(fileobj=f)
         m = {}
         packages = {}
