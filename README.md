@@ -4,6 +4,12 @@ A tool to handle local/remote msys/mingw repositories.
 
 ## Features
 
+* [ ] display information
+
+* [ ] synchronize data
+
+  * [ ] generate signatures from catalogs
+
 * [ ] check integrity
 
   * [ ] catalogs
