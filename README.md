@@ -1,21 +1,21 @@
 # Minimal System Repository
 
+A tool to handle local/remote msys/mingw repositories.
+
 ## Features
 
-* [X] check integrity of packages (single thread)
-
-## Work In Progress
-
-## To Do
+* [ ] check integrity
+  * [ ] catalogs
+  * [ ] packages
+    * [X] single threading
+    * [ ] multi threading
 
 * [ ] build archive
   * [ ] extract distribution
   * [ ] apply configuration
   * [ ] archive directory
 
-### Fixes
-
-### Tests
+## Tests
 
 * [ ] pacman's need of .sig files for packages
 * [ ] bootstrap mintty, msys runtime and pacman
