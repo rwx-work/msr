@@ -10,14 +10,7 @@ import synchronization
 
 
 def build():
-    # TODO identify
-    print('TODO identify')
-    # TODO extract
-    print('TODO extract')
-    # TODO apply
-    print('TODO apply')
-    # TODO archive
-    print('TODO archive')
+    pass
 
 
 def check():
