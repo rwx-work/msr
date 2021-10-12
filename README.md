@@ -7,25 +7,17 @@ A tool to handle local/remote msys/mingw repositories.
 * [ ] display information
 
 * [ ] synchronize data
-
   * [ ] generate signatures from catalogs
 
 * [ ] check integrity
-
   * [ ] catalogs
-
   * [ ] packages
-
     * [x] single threading
-
     * [ ] multi threading
 
 * [ ] build archive
-
   * [ ] extract distribution
-
   * [ ] apply configuration
-
   * [ ] archive directory
 
 ## Tests
