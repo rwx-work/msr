@@ -10,8 +10,6 @@
 
 ### Fixes
 
-* [ ] check integrity of packages on a single line
-
 ### Tests
 
 * [ ] pacman's need of .sig files for packages

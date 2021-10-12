@@ -29,14 +29,16 @@ def check():
             for package in subsystem.catalog.packages.values():
                 packages.append((subsystem, package))
     for index, items in enumerate(packages):
-        print(index, '/', len(packages))
+        print('\r', index, '/', len(packages), '←', 'checked', end='')
         subsystem, package = items
         path = os.path.join(subsystem.path, package.filename)
         with open(path, 'br') as f:
             hash = hashlib.sha256(f.read()).hexdigest()
             if hash != package.sha256sum:
                 broken.append(package)
-    print(len(broken), '/', len(packages))
+    print()
+    print('', str(len(broken)).rjust(len(str(len(packages)))),
+          '/', len(packages), '←', 'broken')
 
 
 def info():
