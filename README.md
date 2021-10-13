@@ -16,12 +16,17 @@ A tool to handle local/remote msys/mingw repositories.
     * [ ] packages
         * [x] single threading
         * [ ] multi threading
+        * [ ] progress bars
 * [ ] build archive
-    * [ ] extract distribution
+    * [ ] get base file system
+        * [ ] extract from distribution
+        * [ ] bootstrap mintty, msys, pacman
     * [ ] apply configuration
     * [ ] archive directory
+* [ ] build dependency graph
+    * [ ] generate graphviz diagram
+    * [ ] render final image
 
-## Tests
+## Info
 
-* [ ] pacman's need of both .db and .files as catalog
-* [ ] bootstrap mintty, msys runtime and pacman
+* pacman needs .db catalog, but .files seems optional
