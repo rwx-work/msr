@@ -16,7 +16,7 @@ class Synchronization:
 
     def run(self):
         for architecture in self.remote:
-            for subsystem in architecture.subsystems.values():
+            for subsystem in architecture:
                 for _, package in sorted(subsystem.catalog.packages.items()):
                     f = file.File(
                         os.path.join(self.remote.location, subsystem.path),

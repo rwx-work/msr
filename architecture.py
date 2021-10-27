@@ -24,9 +24,13 @@ class Architecture:
                                      for f in arguments.subsystems]
                            if s in subsystems}
 
+    def __iter__(self):
+        return self.subsystems.values().__iter__()
+
     def __str__(self):
         lines = [
-            f'Name: {self.name}',
-            f'Bits: {self.bits}',
+            f'      Name: {self.name}',
+            f'      Bits: {self.bits}',
+            f'Subsystems: {subsystem.name for subsystem in self}',
         ]
         return os.linesep.join(lines)
