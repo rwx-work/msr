@@ -15,7 +15,7 @@ class Synchronization:
         self.threads = arguments.threads
 
     def run(self):
-        for architecture in self.remote.architectures:
+        for architecture in self.remote:
             for subsystem in architecture.subsystems.values():
                 for _, package in sorted(subsystem.catalog.packages.items()):
                     f = file.File(

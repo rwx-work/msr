@@ -17,7 +17,7 @@ def check():
     packages = []
     broken = []
     lo = local.Local()
-    for architecture in lo.architectures:
+    for architecture in lo:
         for subsystem in architecture.subsystems.values():
             for package in subsystem.catalog.packages.values():
                 packages.append((subsystem, package))
